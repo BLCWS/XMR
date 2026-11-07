@@ -1,0 +1,707 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7faf8">
+<title>WhatsApp Guardian | Secure Utility</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --green: #16a765;
+    --green-dark: #087d49;
+    --green-light: #e9f8f0;
+    --dark: #152b24;
+    --muted: #71827a;
+    --border: #e5eee8;
+    --background: #f5f9f6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 10% 5%, #e4f6eb 0, transparent 35%),
+        radial-gradient(circle at 95% 95%, #eaf5ed 0, transparent 35%),
+        var(--background);
+    color: var(--dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px 18px;
+}
+
+.container {
+    width: 100%;
+    max-width: 690px;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid rgba(220,235,225,.9);
+    border-radius: 22px;
+    padding: 38px;
+    box-shadow: 0 18px 55px rgba(23,65,43,.08);
+}
+
+/* HEADER */
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.logo {
+    width: 57px;
+    height: 57px;
+    background: var(--green-light);
+    border-radius: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.logo svg {
+    width: 32px;
+    height: 32px;
+}
+
+.brand h1 {
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.brand p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 5px;
+}
+
+.status {
+    margin-left: auto;
+    background: #eff9f2;
+    color: #16834e;
+    padding: 7px 11px;
+    border-radius: 30px;
+    font-size: 10px;
+    font-weight: 700;
+    border: 1px solid #d8f0df;
+    white-space: nowrap;
+}
+
+/* INTRO */
+
+.intro {
+    margin: 25px 0;
+}
+
+.intro h2 {
+    font-size: 29px;
+    line-height: 1.25;
+    letter-spacing: -1.2px;
+    margin-bottom: 12px;
+}
+
+.intro h2 span {
+    color: var(--green);
+}
+
+.intro p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #687b70;
+}
+
+/* NOTICE */
+
+.notice {
+    display: flex;
+    gap: 12px;
+    background: #f0faf4;
+    border: 1px solid #dcefe3;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 27px;
+}
+
+.notice-icon {
+    color: var(--green);
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.notice p {
+    font-size: 12px;
+    line-height: 1.7;
+    color: #456253;
+}
+
+/* SECTION */
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.section-heading h3 {
+    font-size: 16px;
+    font-weight: 750;
+}
+
+.section-heading span {
+    margin-left: auto;
+    color: #8a9c91;
+    font-size: 11px;
+}
+
+/* TERMS */
+
+.terms {
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 23px;
+}
+
+.term {
+    display: flex;
+    gap: 13px;
+    padding: 17px;
+    border-bottom: 1px solid #edf2ee;
+}
+
+.term:last-child {
+    border-bottom: none;
+}
+
+.term-number {
+    width: 29px;
+    height: 29px;
+    border-radius: 9px;
+    background: var(--green-light);
+    color: var(--green-dark);
+    font-size: 12px;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.term-content strong {
+    font-size: 13px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.term-content p {
+    color: #718078;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* AGREEMENT */
+
+.agreement {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 17px;
+    border: 1px solid #dfeae2;
+    background: #fafdfb;
+    border-radius: 13px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.agreement:has(input:checked) {
+    border-color: #8bd5a8;
+    background: #f2fbf5;
+}
+
+.agreement input {
+    width: 19px;
+    height: 19px;
+    accent-color: var(--green);
+    flex-shrink: 0;
+    margin-top: 1px;
+    cursor: pointer;
+}
+
+.agreement label {
+    font-size: 12px;
+    line-height: 1.7;
+    color: #506358;
+    cursor: pointer;
+}
+
+.agreement label strong {
+    color: var(--green-dark);
+}
+
+/* DOWNLOAD */
+
+.download-area {
+    margin-top: 23px;
+}
+
+.download-btn {
+    width: 100%;
+    min-height: 57px;
+    border-radius: 12px;
+    border: none;
+    background: #e9efeb;
+    color: #9aa79f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    font-size: 14px;
+    font-weight: 750;
+    text-decoration: none;
+    cursor: not-allowed;
+    transition: .2s;
+}
+
+.download-btn.enabled {
+    background: var(--green);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 7px 18px rgba(22,167,101,.2);
+}
+
+.download-btn.enabled:hover {
+    background: var(--green-dark);
+    transform: translateY(-2px);
+}
+
+.download-btn svg {
+    width: 19px;
+    height: 19px;
+}
+
+.download-feedback {
+    display: none;
+    margin-top: 13px;
+    padding: 12px;
+    background: #edfaf2;
+    border: 1px solid #d2efdd;
+    color: #167b47;
+    border-radius: 10px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.download-feedback.show {
+    display: block;
+}
+
+/* FOOTER */
+
+.footer {
+    text-align: center;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.footer p {
+    color: #92a098;
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+.footer strong {
+    color: #62766a;
+}
+
+/* MOBILE */
+
+@media(max-width: 600px) {
+    body {
+        padding: 18px 12px;
+    }
+
+    .card {
+        padding: 24px 19px;
+        border-radius: 18px;
+    }
+
+    .brand h1 {
+        font-size: 19px;
+    }
+
+    .logo {
+        width: 48px;
+        height: 48px;
+    }
+
+    .status {
+        font-size: 9px;
+        padding: 6px 8px;
+    }
+
+    .intro h2 {
+        font-size: 25px;
+    }
+
+    .intro p {
+        font-size: 13px;
+    }
+
+    .term {
+        padding: 14px 12px;
+    }
+}
+
+@media(max-width: 360px) {
+    .status {
+        display: none;
+    }
+}
+
+
+
+/* INCREASED TYPOGRAPHY */
+
+.brand h1 {
+    font-size: 27px;
+}
+
+.brand p {
+    font-size: 15px;
+}
+
+.status {
+    font-size: 12px;
+    padding: 9px 13px;
+}
+
+.intro h2 {
+    font-size: 35px;
+}
+
+.intro p {
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+.notice p {
+    font-size: 15px;
+    line-height: 1.85;
+}
+
+.notice-icon {
+    font-size: 22px;
+}
+
+.section-heading h3 {
+    font-size: 20px;
+}
+
+.section-heading span {
+    font-size: 13px;
+}
+
+.term-number {
+    font-size: 14px;
+    width: 34px;
+    height: 34px;
+}
+
+.term-content strong {
+    font-size: 16px;
+}
+
+.term-content p {
+    font-size: 15px;
+    line-height: 1.85;
+}
+
+.agreement label {
+    font-size: 15px;
+    line-height: 1.85;
+}
+
+.agreement input {
+    width: 22px;
+    height: 22px;
+}
+
+.download-btn {
+    font-size: 17px;
+    min-height: 65px;
+}
+
+.download-feedback {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.footer p {
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+/* MOBILE READABILITY */
+
+@media(max-width: 600px) {
+    .brand h1 {
+        font-size: 22px;
+    }
+
+    .brand p {
+        font-size: 13px;
+    }
+
+    .intro h2 {
+        font-size: 30px;
+    }
+
+    .intro p {
+        font-size: 16px;
+    }
+
+    .notice p {
+        font-size: 14px;
+    }
+
+    .section-heading h3 {
+        font-size: 18px;
+    }
+
+    .section-heading span {
+        font-size: 10px;
+    }
+
+    .term-content strong {
+        font-size: 15px;
+    }
+
+    .term-content p {
+        font-size: 14px;
+    }
+
+    .agreement label {
+        font-size: 14px;
+    }
+
+    .download-btn {
+        font-size: 16px;
+    }
+
+    .footer p {
+        font-size: 12px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="card">
+
+    <header class="header">
+        <div class="logo">
+            <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L20 5V11C20 16 16.5 20 12 22C7.5 20 4 16 4 11V5L12 2Z"
+                stroke="#16a765" stroke-width="1.8"/>
+                <path d="M8.5 12L10.8 14.3L15.8 9.3"
+                stroke="#16a765" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+
+        <div class="brand">
+            <h1>WhatsApp Guardian</h1>
+            <p>Device management utility</p>
+        </div>
+
+        <div class="status">SECURE ACCESS</div>
+    </header>
+
+    <section class="intro">
+        <h2>Welcome to <span>Guardian.</span></h2>
+        <p>
+            A device management utility designed for authorized use.
+            Review the terms below before proceeding to the download.
+        </p>
+    </section>
+
+    <div class="notice">
+        <div class="notice-icon">i</div>
+        <p>
+            <strong>Important information</strong><br>
+            This utility must only be used on devices you own or
+            where the owner has explicitly authorized its use.
+        </p>
+    </div>
+
+    <div class="section-heading">
+        <h3>Terms & Conditions</h3>
+        <span>PLEASE READ CAREFULLY</span>
+    </div>
+
+    <div class="terms">
+
+        <div class="term">
+            <div class="term-number">01</div>
+            <div class="term-content">
+                <strong>Consent & Authorization</strong>
+                <p>
+                    You must own the device or have clear,
+                    documented permission from its owner before
+                    using this utility.
+                </p>
+            </div>
+        </div>
+
+        <div class="term">
+            <div class="term-number">02</div>
+            <div class="term-content">
+                <strong>Legal Responsibility</strong>
+                <p>
+                    Unauthorized access, interception or monitoring
+                    of another person's private communications may
+                    violate applicable laws.
+                </p>
+            </div>
+        </div>
+
+        <div class="term">
+            <div class="term-number">03</div>
+            <div class="term-content">
+                <strong>Installation & Usage</strong>
+                <p>
+                    You are responsible for verifying the software
+                    source and using the utility in accordance with
+                    applicable laws and device permissions.
+                </p>
+            </div>
+        </div>
+
+        <div class="term">
+            <div class="term-number">04</div>
+            <div class="term-content">
+                <strong>Privacy & Data</strong>
+                <p>
+                    This webpage does not collect or transmit
+                    personal information. The software's own
+                    data practices should be reviewed separately.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="agreement">
+        <input type="checkbox" id="agreeCheck">
+        <label for="agreeCheck">
+            I confirm that I have read and understood the terms
+            and conditions above. I agree to proceed with
+            <strong>authorized use only.</strong>
+        </label>
+    </div>
+
+    <div class="download-area">
+
+        <a href="#"
+           class="download-btn"
+           id="downloadBtn"
+           aria-disabled="true">
+
+            <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 3V15M7 10L12 15L17 10M5 20H19"
+                stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+
+            Download Guardian
+        </a>
+
+        <div class="download-feedback" id="downloadFeedback">
+            Your download has been initiated.
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <p>
+            <strong>WhatsApp Guardian</strong><br>
+            Independent utility. Not affiliated with or endorsed
+            by WhatsApp or Meta.<br>
+            Use responsibly and respect everyone's privacy.
+        </p>
+    </footer>
+
+</div>
+</div>
+
+<script>
+(function() {
+
+    const checkbox = document.getElementById('agreeCheck');
+    const button = document.getElementById('downloadBtn');
+    const feedback = document.getElementById('downloadFeedback');
+
+    const DOWNLOAD_URL =
+    'https://github.com/your-username/whatsapp-guardian/releases/latest/download/whatsapp-guardian.zip';
+
+    function updateButton() {
+
+        if (checkbox.checked) {
+            button.classList.add('enabled');
+            button.setAttribute('aria-disabled', 'false');
+        } else {
+            button.classList.remove('enabled');
+            button.setAttribute('aria-disabled', 'true');
+            feedback.classList.remove('show');
+        }
+
+    }
+
+    checkbox.addEventListener('change', updateButton);
+
+    button.addEventListener('click', function(event) {
+
+        if (!checkbox.checked) {
+            event.preventDefault();
+            return;
+        }
+
+        event.preventDefault();
+
+        feedback.classList.add('show');
+
+        feedback.textContent =
+        'Opening the official download location...';
+
+        window.location.href = DOWNLOAD_URL;
+
+    });
+
+    updateButton();
+
+})();
+</script>
+
+</body>
+</html>
