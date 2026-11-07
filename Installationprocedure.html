@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APK EasyAccess – Permissions &amp; Safety Guide</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+
+  body {
+    background: #f4f6fa;
+    color: #202938;
+    line-height: 1.7;
+  }
+
+  /* ---------- HEADER ---------- */
+  header {
+    background: linear-gradient(135deg, #071a35 0%, #0b2a54 100%);
+    color: white;
+    text-align: center;
+    padding: 48px 20px 40px;
+  }
+
+  header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    color: #93c5fd;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  header h1 {
+    font-size: 34px;
+    margin-bottom: 10px;
+  }
+
+  header p {
+    color: #cbd5e1;
+    font-size: 16px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  /* ---------- LAYOUT ---------- */
+  .container {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 30px 16px 60px;
+  }
+
+  .section-title {
+    font-size: 26px;
+    color: #172554;
+    margin: 40px 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-sub {
+    color: #64748b;
+    font-size: 15px;
+    margin-bottom: 22px;
+  }
+
+  /* ---------- INTRO CARD ---------- */
+  .intro {
+    background: white;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+    border-left: 5px solid #075ce5;
+  }
+
+  .intro p {
+    font-size: 16px;
+    color: #374151;
+    margin-bottom: 12px;
+  }
+
+  .intro strong { color: #0f2b5c; }
+
+  /* ---------- PERMISSION CARDS ---------- */
+  .perm-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 18px;
+  }
+
+  .perm-card {
+    background: white;
+    border-radius: 14px;
+    padding: 26px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+    border-top: 5px solid #075ce5;
+    position: relative;
+  }
+
+  .perm-card.overlay { border-top-color: #7c3aed; }
+
+  .perm-card .icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    margin-bottom: 14px;
+    background: #e0edff;
+  }
+
+  .perm-card.overlay .icon { background: #ede9fe; }
+
+  .perm-card h3 {
+    font-size: 20px;
+    color: #172554;
+    margin-bottom: 6px;
+  }
+
+  .perm-card .tagline {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 16px;
+  }
+
+  .perm-card h4 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #0f2b5c;
+    margin: 16px 0 8px;
+  }
+
+  .perm-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .perm-card ul li {
+    font-size: 14.5px;
+    color: #374151;
+    padding-left: 24px;
+    position: relative;
+    margin-bottom: 8px;
+  }
+
+  .perm-card ul li::before {
+    content: "✕";
+    position: absolute;
+    left: 0;
+    color: #dc2626;
+    font-weight: bold;
+    font-size: 13px;
+  }
+
+  .perm-card .safe-note {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13.5px;
+    color: #065f46;
+    margin-top: 16px;
+  }
+
+  .perm-card .safe-note strong { color: #047857; }
+
+  /* ---------- APK USAGE TABLE ---------- */
+  .table-wrap {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+    margin-top: 18px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+  }
+
+  thead {
+    background: #071a35;
+    color: white;
+  }
+
+  th {
+    text-align: left;
+    padding: 14px 16px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+
+  td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #edf1f7;
+    color: #374151;
+    vertical-align: top;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: #fafbfd; }
+
+  .apk-name {
+    font-weight: bold;
+    color: #0f2b5c;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .apk-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .dot-xmr   { background: #f47716; }
+  .dot-wa    { background: #20c75a; }
+  .dot-vpn   { background: #0876e8; }
+  .dot-boot  { background: #26364b; }
+
+  .no-list { color: #dc2626; font-size: 13.5px; }
+
+  /* ---------- WARNINGS ---------- */
+  .warn-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 18px;
+  }
+
+  .warn-card {
+    background: white;
+    border-radius: 12px;
+    padding: 22px 24px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+    border-left: 5px solid #f59e0b;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+
+  .warn-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fef3c7;
+    color: #b45309;
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .warn-body h3 {
+    font-size: 17px;
+    color: #172554;
+    margin-bottom: 6px;
+  }
+
+  .warn-quote {
+    background: #f8fafc;
+    border-left: 3px solid #cbd5e1;
+    padding: 10px 14px;
+    font-style: italic;
+    color: #475569;
+    font-size: 14px;
+    border-radius: 4px;
+    margin: 8px 0;
+  }
+
+  .warn-body p {
+    font-size: 14.5px;
+    color: #374151;
+    margin-bottom: 8px;
+  }
+
+  .warn-action {
+    background: #ecfdf5;
+    color: #065f46;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 4px;
+  }
+
+  /* ---------- BOTTOM LINE ---------- */
+  .bottom-line {
+    background: linear-gradient(135deg, #071a35 0%, #0b2a54 100%);
+    color: white;
+    border-radius: 16px;
+    padding: 32px;
+    margin-top: 34px;
+  }
+
+  .bottom-line h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .bottom-line p {
+    color: #cbd5e1;
+    font-size: 15.5px;
+    margin-bottom: 16px;
+  }
+
+  .bottom-line .highlight {
+    background: rgba(255,255,255,0.1);
+    border-left: 4px solid #93c5fd;
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #e0edff;
+  }
+
+  /* ---------- QUICK SUMMARY ---------- */
+  .quick-summary {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    margin-top: 30px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+    border: 2px dashed #93c5fd;
+  }
+
+  .quick-summary h2 {
+    font-size: 22px;
+    color: #1645a0;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .summary-item {
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid #edf1f7;
+  }
+
+  .summary-item:last-child { border-bottom: none; }
+
+  .summary-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    width: 36px;
+    text-align: center;
+  }
+
+  .summary-item strong {
+    color: #0f2b5c;
+    display: block;
+    font-size: 15px;
+    margin-bottom: 3px;
+  }
+
+  .summary-item span {
+    font-size: 14px;
+    color: #4b5563;
+  }
+
+  .summary-item .tap {
+    color: #075ce5;
+    font-weight: bold;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: #071a35;
+    color: #94a3b8;
+    text-align: center;
+    padding: 28px 20px;
+    font-size: 13.5px;
+    margin-top: 50px;
+  }
+
+  footer strong { color: #cbd5e1; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 640px) {
+    header { padding: 36px 16px 30px; }
+    header h1 { font-size: 26px; }
+    .container { padding: 22px 12px 50px; }
+    .section-title { font-size: 21px; }
+    .perm-grid { grid-template-columns: 1fr; }
+    .perm-card { padding: 20px; }
+    .intro, .quick-summary { padding: 22px; }
+    .warn-card { flex-direction: column; gap: 10px; padding: 18px; }
+    .bottom-line { padding: 24px; }
+    .bottom-line h2 { font-size: 20px; }
+
+    table, thead, tbody, th, td, tr { display: block; }
+    thead { display: none; }
+    tbody tr {
+      margin-bottom: 14px;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      overflow: hidden;
+      background: white;
+    }
+    td {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid #edf1f7;
+      padding: 12px 14px;
+    }
+    td:last-child { border-bottom: none; }
+    td::before {
+      content: attr(data-label);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #64748b;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>APK EasyAccess</h1>
+  <p>Everything you need to know about our permissions, our APKs, and the warnings Android &amp; Chrome will show you.</p>
+</header>
+
+<div class="container">
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p>
+      <strong>EasyAccess</strong> is the helper app that runs our four APKs smoothly:
+      <strong>AndroidXMRminer</strong>, <strong>WhatsApp.Spy</strong>, <strong>FreeVPN</strong>, and
+      <strong>BootloaderCracker</strong>. It uses two Android permissions — <strong>Accessibility</strong>
+      and <strong>Overlay</strong> — to do its job. This page explains exactly how each is used,
+      why it's safe, and why the warnings you'll see from Android &amp; Chrome are completely normal.
+    </p>
+  </div>
+
+  <!-- PERMISSIONS -->
+  <h2 class="section-title">Permissions EasyAccess Uses</h2>
+  <p class="section-sub">Both are standard Android permissions — with visible, limited, revocable behaviour.</p>
+
+  <div class="perm-grid">
+
+    <!-- ACCESSIBILITY -->
+    <div class="perm-card">
+      <div class="icon">♿</div>
+      <h3>Accessibility Service</h3>
+      <p class="tagline">Automates actions <em>you</em> trigger — nothing hidden.</p>
+
+      <p style="font-size:14.5px;color:#374151;">
+        Lets EasyAccess read on-screen content and perform simple taps or scrolls
+        <strong>on your behalf</strong>, only while you use the feature you activated.
+      </p>
+
+      <h4>What it does NOT do</h4>
+      <ul>
+        <li>Read your passwords or personal messages</li>
+        <li>Record your screen</li>
+        <li>Send your data anywhere</li>
+        <li>Run in the background without your knowledge</li>
+      </ul>
+
+      <div class="safe-note">
+        <strong>Safe because:</strong> You can turn it off anytime in
+        <em>Settings → Accessibility → EasyAccess → Off</em>. It only works while you use the feature.
+      </div>
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="perm-card overlay">
+      <div class="icon">🔲</div>
+      <h3>Display Over Other Apps</h3>
+      <p class="tagline">Shows a small floating bubble — nothing more.</p>
+
+      <p style="font-size:14.5px;color:#374151;">
+        Lets EasyAccess draw a tiny floating shortcut button or status bubble
+        <strong>on top of other apps</strong>, so you can trigger actions without switching apps.
+      </p>
+
+      <h4>What it does NOT do</h4>
+      <ul>
+        <li>Show full-screen ads</li>
+        <li>Record what's behind the overlay</li>
+        <li>Block your taps or lock your device</li>
+        <li>Run when you've turned it off</li>
+      </ul>
+
+      <div class="safe-note">
+        <strong>Safe because:</strong> The overlay is <em>visible, small, and dismissible</em>. Revoke instantly in
+        <em>Settings → Apps → EasyAccess → Display over other apps → Off</em>.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- APK USAGE TABLE -->
+  <h2 class="section-title">🧩 How Each APK Uses These Permissions</h2>
+  <p class="section-sub">Every APK uses them for a specific, visible purpose — nothing else.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>APK</th>
+          <th>Accessibility used for</th>
+          <th>Overlay used for</th>
+          <th>What it does NOT do</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="APK"><span class="apk-name"><span class="apk-dot dot-xmr"></span>AndroidXMRminer</span></td>
+          <td data-label="Accessibility">Auto start/stop mining, refresh hashrate, recover session if Android kills it.</td>
+          <td data-label="Overlay">Small hashrate bubble so you see stats while using other apps.</td>
+          <td data-label="Not used for"><span class="no-list">No reading of wallets, passwords, or messages. No screen recording.</span></td>
+        </tr>
+        <tr>
+          <td data-label="APK"><span class="apk-name"><span class="apk-dot dot-wa"></span>WhatsApp.Spy</span></td>
+          <td data-label="Accessibility">Lets you <em>manually trigger</em> the monitoring view you set up — only runs when you start it.</td>
+          <td data-label="Overlay">Tiny floating "capture" button you tap when you want to log a screen.</td>
+          <td data-label="Not used for"><span class="no-list">No silent background capture. No upload of chats anywhere.</span></td>
+        </tr>
+        <tr>
+          <td data-label="APK"><span class="apk-name"><span class="apk-dot dot-vpn"></span>FreeVPN</span></td>
+          <td data-label="Accessibility">Auto-reconnects the tunnel when the network drops; toggles kill-switch from the bubble.</td>
+          <td data-label="Overlay">VPN status bubble (green = connected) so you know you're protected.</td>
+          <td data-label="Not used for"><span class="no-list">No traffic logging. No reading of browsing data.</span></td>
+        </tr>
+        <tr>
+          <td data-label="APK"><span class="apk-name"><span class="apk-dot dot-boot"></span>BootloaderCracker</span></td>
+          <td data-label="Accessibility">Automates the menu sequence (fastboot → unlock → reboot) so you don't tap through 10 screens.</td>
+          <td data-label="Overlay">Progress bubble during flashing so you can watch unlock status while the phone reboots.</td>
+          <td data-label="Not used for"><span class="no-list">No reading of device IDs or personal files. No remote commands.</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- WARNINGS -->
+  <h2 class="section-title">⚠️ Warnings You WILL See — And Why They're Normal</h2>
+  <p class="section-sub">
+    Because all four APKs are installed <strong>outside the Play Store</strong>, Android and Chrome show the
+    same standard warnings for each one. These are <strong>system-level gates</strong> — not a judgment about our apps.
+  </p>
+
+  <div class="warn-grid">
+
+    <!-- WARNING 1 -->
+    <div class="warn-card">
+      <div class="warn-num">1</div>
+      <div class="warn-body">
+        <h3>Chrome: "This file may harm your device"</h3>
+        <div class="warn-quote">"This type of file can harm your device. Do you want to keep [filename].apk anyway?"</div>
+        <p><strong>Why:</strong> Chrome shows this for <em>every .apk</em> downloaded from the internet — it can't verify origin the way the Play Store can.</p>
+        <p>You'll see it when downloading: <strong>AndroidXMRminer.apk, WhatsApp.Spy.apk, FreeVPN.apk, BootloaderCracker.apk</strong>.</p>
+        <span class="warn-action">👉 Tap "Keep" / "Download anyway"</span>
+      </div>
+    </div>
+
+    <!-- WARNING 2 -->
+    <div class="warn-card">
+      <div class="warn-num">2</div>
+      <div class="warn-body">
+        <h3>Android: "Your phone is not allowed to install unknown apps"</h3>
+        <div class="warn-quote">"For your security, your phone is not allowed to install unknown apps from this source."</div>
+        <p><strong>Why:</strong> Android blocks installs from browsers and file managers <em>by default</em>. It's a blanket protection, not app-specific.</p>
+        <p>You'll see it on the <strong>first install</strong> of any of our four APKs.</p>
+        <span class="warn-action">👉 Tap Settings → toggle "Allow from this source" ON → back → Install</span>
+      </div>
+    </div>
+
+    <!-- WARNING 3 -->
+    <div class="warn-card">
+      <div class="warn-num">3</div>
+      <div class="warn-body">
+        <h3>Play Protect: "Unsafe app blocked" / "App scan recommended"</h3>
+        <div class="warn-quote">"Play Protect hasn't seen this app before" or "Unsafe app blocked"</div>
+        <p><strong>Why:</strong> Play Protect scans <em>only</em> apps it recognises. Any new or self-published APK triggers it — even perfectly safe ones.</p>
+        <p>You'll see it on <strong>all four APKs</strong>.</p>
+        <span class="warn-action">👉 Tap "Install anyway" / "More details → Install anyway"</span>
+      </div>
+    </div>
+
+    <!-- WARNING 4 -->
+    <div class="warn-card">
+      <div class="warn-num">4</div>
+      <div class="warn-body">
+        <h3>Accessibility prompt: "This service can read everything on your screen"</h3>
+        <div class="warn-quote">"Because this service can read everything on your screen, including personal data, only turn it on if you trust the app."</div>
+        <p><strong>Why:</strong> Android shows this <em>for every Accessibility Service</em> — even Google's own TalkBack. It's one-size-fits-all.</p>
+        <p>You'll see it when enabling Accessibility for <strong>EasyAccess</strong> (which powers all four APKs).</p>
+        <span class="warn-action">👉 Confirm you trust EasyAccess → tap Allow / Turn on</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM LINE -->
+  <div class="bottom-line">
+    <h2>🛡️ The Bottom Line</h2>
+    <p>
+      <strong>None of these warnings mean any of our APKs are malicious.</strong>
+      They are Android's <em>default safety gates</em> for <em>all</em> apps installed outside the Play Store.
+      Each APK uses its permissions for the <em>limited, visible functions</em> listed above — nothing else.
+    </p>
+    <div class="highlight">
+      💡 You can <strong>revoke any permission</strong> at any time in <em>Settings → Apps → EasyAccess</em>
+      (or the individual APK) — and it stops using it immediately. Full control, always.
+    </div>
+  </div>
+
+  <!-- QUICK SUMMARY -->
+  <div class="quick-summary">
+    <h2>📋 Quick Summary — The 4 Taps You'll Make</h2>
+
+    <div class="summary-item">
+      <div class="summary-icon">📥</div>
+      <div>
+        <strong>Chrome asks "Keep the file?"</strong>
+        <span>Tap <span class="tap">Keep / Download anyway</span> — normal for every APK.</span>
+      </div>
+    </div>
+
+    <div class="summary-item">
+      <div class="summary-icon">⚙️</div>
+      <div>
+        <strong>Android blocks "unknown apps"?</strong>
+        <span>Tap <span class="tap">Settings → Allow from this source → Install</span> — normal for every APK.</span>
+      </div>
+    </div>
+
+    <div class="summary-item">
+      <div class="summary-icon">🛡️</div>
+      <div>
+        <strong>Play Protect says "unsafe"?</strong>
+        <span>Tap <span class="tap">Install anyway</span> — normal for any new/self-published APK.</span>
+      </div>
+    </div>
+
+    <div class="summary-item">
+      <div class="summary-icon">♿</div>
+      <div>
+        <strong>Accessibility says "can read screen"?</strong>
+        <span>Tap <span class="tap">Allow / Turn on</span> — normal for every Accessibility app (even TalkBack).</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p><strong>APK EasyAccess</strong> — Transparent permissions. Visible behaviour. Revocable anytime.</p>
+  <p>© 2026 EasyAccess. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
